@@ -1,0 +1,42 @@
+<h1><%= t ".title" %></h1>
+<h2><%= t ".subtitle" %></h2>
+
+<%= link_to "New product", new_product_path if authenticated? %>
+<%= link_to "Login", new_session_path unless authenticated? %>
+
+<div id="products">
+  <% @products.each do |product| %>
+    <div>
+      <a href="/products/<%= product.id %>">
+        <%= product.id %> 
+        <%= product.name%>
+      </a>
+      
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Login", new_session_path unless authenticated? %>
+
+<br>
+<a href="/products?locale=en">
+ <button>ENG</button>
+</a>
+
+<br>
+
+<a href="/products?locale=es">
+ <button>ES</button>
+</a>
+
+<br>
+
+<a href="/products?locale=pt">
+ <button>PT</button>
+</a>
+
+<br>
+
+<a href="/products?locale=ptbr">
+ <button>PTBR</button>
+</a>

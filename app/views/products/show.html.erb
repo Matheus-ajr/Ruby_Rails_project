@@ -1,0 +1,24 @@
+<p><%= link_to "Back", products_path %><p>
+
+<section class="product">
+ <%= image_tag @product.featured_image if @product.featured_image.attached? %>
+
+  <section class="product.info">
+    <% cache @product do %>
+     <h1>ID: <%= @product.id %></h1>
+     <h1>Produto: <%= @product.name %></h1>
+     <h2><%= @product.description %><h2>
+     <h4>Criado: <%= @product.created_at %></h4>
+     <h1> Estoque: <%= @product.inventory_count %></h1>
+     <h2>Esta é a Action Show</h2>
+    <% end %>
+
+    <%= render "inventory", product: @product %>
+
+    <% if authenticated? %>
+     <%= link_to "Edit", edit_product_path(@product) %>
+     <%= button_to "Delete", @product, method: :delete, data: { turbo_confirm: "Você tem certeza?" } %>
+
+    <% end %>
+  </section>
+</section>
